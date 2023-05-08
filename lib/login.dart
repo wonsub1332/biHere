@@ -46,7 +46,7 @@ class _LogInState extends State<LogIn> {
               Padding(padding: EdgeInsets.only(top: 50)),
               Center(
                 child: Image(
-                  image: AssetImage('image/munji.png'),
+                  image: AssetImage('assets/images/developerIcon.png'),
                   width: 170.0,
                 ),
               ),

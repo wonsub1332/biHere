@@ -28,21 +28,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MarketPage extends StatefulWidget {
-  const MarketPage({Key? key}) : super(key: key);
+class Main extends StatefulWidget {
+  const Main({Key? key}) : super(key: key);
 
   @override
-  State<MarketPage> createState() => _MarketPageState();
+  State<Main> createState() => _MainState();
 }
 
-class _MarketPageState extends State<MarketPage> {
-  int _selectedIndex = 0;
-  //static const TextStyle optionStyle =
-  //    TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+class _MainState extends State<Main> {
+  int _selectedIndex = 1;
 
   final List<Widget> _widgetOptions = <Widget>[
     list(),
-    mainPage(),
+    MainPage(),
     myPage(),
   ];
 
@@ -75,7 +73,7 @@ class _MarketPageState extends State<MarketPage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.lightGreen,
+        selectedItemColor: Color.fromRGBO(237, 210, 170, 1.0),
         onTap: _onItemTapped,
       ),
     );

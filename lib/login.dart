@@ -113,6 +113,8 @@ class _LogInState extends State<LogIn> {
                 context,
                 MaterialPageRoute(
                     builder: (BuildContext context) => NextPage()));
+          } else {
+            showSnackBar(context, const Text('Check your info again'));
           }
         }
       },
@@ -137,7 +139,7 @@ class NextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: '_title',
-      home: MarketPage(),
+      home: Main(),
     );
   }
 }

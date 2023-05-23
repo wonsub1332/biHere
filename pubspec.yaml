@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cloud_firestore: 
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +63,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/developerIcon.png
+    - assets/images/DCHECK_logo_gif.gif
+    - assets/images/DCHECK_logo.png
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

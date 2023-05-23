@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "515843373444",
+    "project_id": "dancheck-de236",
+    "storage_bucket": "dancheck-de236.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515843373444:android:0bdccd5ee765fac2f185d1",
+        "android_client_info": {
+          "package_name": "com.example.bihere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515843373444-3k5e7teb4shp3015365mga3u198b4lj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bihere",
+            "certificate_hash": "a280d85b9c9c28d2dbf2ec4dcee1f7c78b3d7a97"
+          }
+        },
+        {
+          "client_id": "515843373444-l3ckscaaukgkthrjcusclem6gn0k4kp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB693w2a9wgHUSHo8JCf1HiVJRexi1YpF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515843373444-l3ckscaaukgkthrjcusclem6gn0k4kp7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "515843373444-vt1tamg9t187plfr8qdksk368dgc1civ.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bihere"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

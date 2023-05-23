@@ -1,5 +1,10 @@
 import 'package:bihere/main.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+String id = "";
+String name = "";
 
 class Myapp extends StatelessWidget {
   @override
@@ -19,22 +24,12 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  TextEditingController controller = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
+  TextEditingController IDcontroller = TextEditingController();
+  TextEditingController PWcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Log in'),
-        elevation: 0.0,
-        backgroundColor: Colors.redAccent,
-        centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.search), onPressed: () {})
-        ],
-      ),
       // email, password 입력하는 부분을 제외한 화면을 탭하면, 키보드 사라지게 GestureDetector 사용
       body: GestureDetector(
         onTap: () {
@@ -46,8 +41,8 @@ class _LogInState extends State<LogIn> {
               Padding(padding: EdgeInsets.only(top: 50)),
               Center(
                 child: Image(
-                  image: AssetImage('assets/images/developerIcon.png'),
-                  width: 170.0,
+                  image: AssetImage('assets/images/DCHECK_logo_gif.gif'),
+                  width: 300.0,
                 ),
               ),
               Form(
@@ -63,14 +58,13 @@ class _LogInState extends State<LogIn> {
                       return Column(
                         children: [
                           TextField(
-                            controller: controller,
+                            controller: IDcontroller,
                             autofocus: true,
-                            decoration:
-                                InputDecoration(labelText: 'Enter email'),
+                            decoration: InputDecoration(labelText: 'Enter ID'),
                             keyboardType: TextInputType.emailAddress,
                           ),
                           TextField(
-                            controller: controller2,
+                            controller: PWcontroller,
                             decoration:
                                 InputDecoration(labelText: 'Enter password'),
                             keyboardType: TextInputType.text,
@@ -80,38 +74,18 @@ class _LogInState extends State<LogIn> {
                             height: 40.0,
                           ),
                           ButtonTheme(
-                              minWidth: 100.0,
+                              minWidth: 200.0,
                               height: 50.0,
                               child: ElevatedButton(
-                                onPressed: () {
-                                  if (controller.text == 'mei@hello.com' &&
-                                      controller2.text == '1234') {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                NextPage()));
-                                  } else if (controller.text ==
-                                          'mei@hello.com' &&
-                                      controller2.text != '1234') {
-                                    showSnackBar(
-                                        context, Text('Wrong password'));
-                                  } else if (controller.text !=
-                                          'mei@hello.com' &&
-                                      controller2.text == '1234') {
-                                    showSnackBar(context, Text('Wrong email'));
-                                  } else {
-                                    showSnackBar(
-                                        context, Text('Check your info again'));
-                                  }
-                                },
+                                onPressed: () => _login(),
                                 child: Icon(
                                   Icons.arrow_forward,
                                   color: Colors.white,
                                   size: 35.0,
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.orangeAccent),
+                                    backgroundColor:
+                                        Color.fromARGB(255, 24, 20, 255)),
                               ))
                         ],
                       );
@@ -121,6 +95,28 @@ class _LogInState extends State<LogIn> {
           ),
         ),
       ),
+    );
+  }
+
+  _login() {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    db.collection("user").get().then(
+      (querySnapshot) {
+        print("Successfully completed");
+        for (var docSnapshot in querySnapshot.docs) {
+          print('${docSnapshot.id} => ${docSnapshot.data()}');
+          if (docSnapshot.data()['id'].toString() == IDcontroller.text &&
+              docSnapshot.data()['pw'].toString() == PWcontroller.text) {
+            id = docSnapshot.data()['id'].toString();
+            name = docSnapshot.data()['name'].toString();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => NextPage()));
+          }
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
     );
   }
 }

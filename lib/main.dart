@@ -4,9 +4,15 @@ import 'package:bihere/list.dart';
 import 'package:bihere/mainPage.dart';
 import 'package:bihere/mypage.dart';
 import 'package:bihere/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// This is the main application widget.
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -36,8 +42,8 @@ class _MarketPageState extends State<MarketPage> {
 
   final List<Widget> _widgetOptions = <Widget>[
     list(),
-    myPage(),
     mainPage(),
+    myPage(),
   ];
 
   void _onItemTapped(int index) {
